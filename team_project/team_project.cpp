@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -23,12 +24,40 @@ public:
 
 };
 
+class Restaurant {
+private:
+    vector<Meal> menu;
+public:
+
+    void addMeal(const Meal& meal) {
+        menu.push_back(meal);
+    }
+    
+    void getRestaurantMenu() {
+        cout << "Menu in Restaurant:" << endl;
+        for (int i = 0; i < menu.size(); i++) {
+            cout << "Meal: " << menu[i].getName() << ", Price: " << menu[i].getPrice() << endl;
+        }
+    }
+
+
+};
+
 int main()
 {
+    Restaurant restaurant;
     Meal meal("Pizza", 150);
-    string mealName = meal.getName();
-    double mealPrice = meal.getPrice();
+    Meal meal2("Burger", 200);
 
-    cout << "Meal: " << mealName << endl << "Price: " << mealPrice << endl;
+   // string mealName = meal.getName();
+   // double mealPrice = meal.getPrice();
+
+   // cout << "Meal: " << mealName << endl << "Price: " << mealPrice << endl;
+
+    restaurant.addMeal(meal);
+    restaurant.addMeal(meal2);
+
+    restaurant.getRestaurantMenu();
+
 
 }
